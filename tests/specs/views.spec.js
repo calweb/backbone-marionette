@@ -1,4 +1,5 @@
 define(function (require) {
+  var Views = require('views');
   var Book = require('books').BookModel;
   var BooksCollection = require('books').BooksCollection;
   var BookView = require('views').BookView;
@@ -48,6 +49,10 @@ define(function (require) {
         expect(this.bookStub).to.have.been.calledOnce;
       });
     });
+  });
+
+  describe('Books View', function () {
+
   });
 
   describe('Form View', function () {
@@ -127,4 +132,63 @@ define(function (require) {
             // form elements are cleared of data
   });
 
+  describe('Header View', function () {
+    before(function () {
+      this.headerView = new Views.HeaderView();
+      this.headerView.render();
+    });
+
+    it('should be an instance of header view class', function () {
+      expect(this.headerView).to.be.an.instanceOf(Views.HeaderView);
+    });
+
+    describe('Template', function () {
+      it('h2 contains header area', function () {
+        var $h2 = this.headerView.$el.find('h2');
+        expect($h2).to.exist;
+        expect($h2.text()).to.be.equal('Header Area');
+      });
+      it('should contain three anchors', function () {
+        var $links = this.headerView.$el.find('a');
+        expect($links.length).to.be.equal(3);
+        expect($links.eq(0).attr('href')).to.be.equal('home');
+        expect($links.eq(1).attr('href')).to.be.equal('addBook');
+        expect($links.eq(2).attr('href')).to.be.equal('about');
+      });
+    });
+  });
+  describe('Footer View', function () {
+    before(function () {
+      this.footerView = new Views.FooterView();
+      this.footerView.render();
+    });
+   it('should be an instance of footer view class', function () {
+     expect(this.footerView).to.be.an.instanceOf(Views.FooterView);
+   });
+
+    describe('Template', function () {
+      it('h2 contains footer area', function () {
+        var $h2 = this.footerView.$el.find('h2');
+        expect($h2).to.exist;
+        expect($h2.text()).to.be.equal('Footer Area');
+      });
+
+    });
+  });
+  describe('Help View', function () {
+
+  });
+  describe('About View', function () {
+
+  });
+
+  describe('Empty View', function () {
+
+  });
+
+
+
+  describe('Content Layout View', function () {
+
+  });
 });

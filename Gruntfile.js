@@ -62,45 +62,9 @@ module.exports = function (grunt) {
         ]
       }
     },
-    // connect: {
-    //   options: {
-    //     port: 9000,
-    //     // Change this to '0.0.0.0' to access the server from outside
-    //     hostname: 'localhost'
-    //   }
-    // },
-    connect: {
-        options: {
-          // port: 9000,
-          // Change this to '0.0.0.0' to access the server from outside
-          hostname: 'localhost'
-        },
-      test: {
-        options: {
-          port: 9001,
-          base: ['tests'  ]
-        }
-      }
-    },
-    mocha_require_phantom: {
-      options: {
-        base: 'tests',
-        keepAlive: true,
-        port: 9001,
-        main: 'SpecRunner.js',
-        requireLib: 'lib/requirejs/require.js',
-        files: ['tests/specs/*.js'],
-      }
-    },
+
     mocha_phantomjs: {
       all: ['tests/**/*.html']
-      // all: {
-      //
-      //   options: {
-      //     run: true,
-      //     urls: ['http://<%= connect.options.hostname %>:<%= connect.test.options.port %>/index.html']
-      //   }
-      // }
     },
 
     // Mocha
@@ -113,8 +77,7 @@ module.exports = function (grunt) {
           port: 9001,
           log: true,
           reporter: 'Nyan',
-          run: true,
-          // urls: ['http://localhost:<%= connect.test.options.port %>/index.html']
+          run: true
         }
       }
 
